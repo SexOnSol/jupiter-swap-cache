@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "target": "ESNext",
+        "lib": [
+            "ESNext"
+        ],
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "outDir": "dist",
+    },
+    "exclude": [
+        "src/**/*.js"
+    ],
+    "lib": [
+        "es2023"
+    ],
+}

@@ -1,0 +1,39 @@
+{
+  "name": "jupiter-swap-cache",
+  "version": "1.0.0",
+  "description": "Swap cache for jupiter v6",
+  "module": "src/index.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SexOnSol/jupiter-swap-cache.git"
+  },
+  "author": "NotoriousPyro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SexOnSol/jupiter-swap-cache/issues"
+  },
+  "homepage": "https://github.com/SexOnSol/jupiter-swap-cache#readme",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.29.0",
+    "@jup-ag/instruction-parser": "^6.0.22",
+    "bn.js": "^5.2.1",
+    "lmdb": "^3.0.6",
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "@jup-ag/api": "^6.0.23",
+    "@solana/web3.js": "^1.91.8"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.5",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.0",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  }
+}
