@@ -1,11 +1,14 @@
 {
-  "name": "jupiter-swap-cache",
+  "name": "@sexonsol/jupiter-swap-cache",
   "version": "1.0.0",
   "description": "Swap cache for jupiter v6",
   "module": "src/index.ts",
   "scripts": {
     "test": "jest",
     "build": "tsup"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
