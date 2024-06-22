@@ -35,7 +35,7 @@ export type SwapInfo = {
     cacheUntil?: number,
 }
 
-type GetManyParams = {
+type GetSwapInfoParams = {
     inputMint: string,
     outputMint: string,
     routeAmmkeys: string[]
@@ -43,13 +43,13 @@ type GetManyParams = {
 
 const SwapInfoDB = {
     getMany: async (
-        args: GetManyParams[]
+        args: GetSwapInfoParams[]
     ): Promise<(SwapInfo|undefined)[]> => _db.getMany(
         args.map(arg => [arg.inputMint, arg.outputMint, arg.routeAmmkeys])
     ),
     
     get: (
-        args: GetManyParams
+        args: GetSwapInfoParams
     ): SwapInfo | undefined => _db.get([
         args.inputMint,
         args.outputMint,

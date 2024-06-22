@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "module": "NodeNext",
+        "module": "CommonJS",
         "esModuleInterop": true,
-        "target": "ESNext",
+        "target": "es6",
         "lib": [
             "ESNext"
         ],
-        "moduleResolution": "NodeNext",
+        "moduleResolution": "Node",
         "resolveJsonModule": true,
         "sourceMap": true,
         "outDir": "dist",
@@ -15,6 +15,6 @@
         "src/**/*.js"
     ],
     "lib": [
-        "es2023"
+        "ES2015"
     ],
 }

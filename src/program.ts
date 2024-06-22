@@ -11,13 +11,6 @@ export type IDL = typeof program.idl;
 export const eventAuthority = new PublicKey("D8cy77BBepLMngZx6ZukaTff5hCt1HrWyKk3Hnd9oitf");
 
 
-export class InvalidRouteError extends Error {
-    constructor(message: string) {
-        super(message);
-        this.name = "InvalidRoute";
-    }
-}
-
 export class DecodeInstructionError extends Error {
     constructor(message: string) {
         super(message);
@@ -56,21 +49,34 @@ export type Route = {
     }
 }
 
-
+/**
+ * Create a swap instruction using `route` method from Jupiter v6.
+ * @param accountsStrict 9 strict accounts
+ * @param remainingAccounts remaining accounts
+ * @param routePlan route plan
+ * @param inAmount input amount
+ * @param quotedOutAmount quoted output amount
+ * @param keypair user keypair to sign
+ * @param slippageBps slippage in bps, or 0
+ * @param platformFeeBps platform fee in bps, or 0
+ * @returns equivalent of `prepare` method from `@coral-xyz/anchor` using v6 route method
+ */
 export const createSwapInstruction = async (
     accountsStrict: Route["AccountsStrict"],
     remainingAccounts: Route["RemainingAccounts"],
     routePlan: Route["Arguments"]["routePlan"],
     inAmount: Route["Arguments"]["inAmount"],
     quotedOutAmount: Route["Arguments"]["quotedOutAmount"],
-    keypair: Keypair
+    keypair: Keypair,
+    slippageBps?: Route["Arguments"]["slippageBps"],
+    platformFeeBps?: Route["Arguments"]["platformFeeBps"],
 ) => (
     program.methods.route(
         routePlan,
         inAmount, // input amount
         quotedOutAmount, // output amount
-        0, // slippage
-        0, // platform fee
+        slippageBps | 0, // slippage
+        platformFeeBps | 0, // platform fee
     )
         .accountsStrict(accountsStrict)
         .remainingAccounts(remainingAccounts)
@@ -78,6 +84,11 @@ export const createSwapInstruction = async (
 ).prepare();
 
 
+/**
+ * Decode the swap instruction data given by Jupiter v6 API.
+ * @param data `swapInstruction.data` from Jupiter v6 API /swapInstructions POST response
+ * @returns decoded swap instruction data as `T`
+ */
 export const decodeSwapInstructionData = async <T>(
     data: string,
 ): Promise<T> => {

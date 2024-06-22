@@ -1,6 +1,6 @@
 {
   "name": "@sexonsol/jupiter-swap-cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swap cache for jupiter v6",
   "module": "src/index.ts",
   "scripts": {
